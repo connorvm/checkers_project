@@ -1,0 +1,9 @@
+TODO:
+Checkers rules: https://simple.wikipedia.org/wiki/Checkers
+Make game more turn based -> Add player 1 and player 2 support
+Increase "menu" capability
+    -> Check how many pieces have been stolen
+    -> Something else probably
+Make it so that if a piece can jump an oppenents piece, it will. Checker rules
+    state that if a piece can be jumped, it must be jumped.
+Eventually add support for kinging(doubling) a piece

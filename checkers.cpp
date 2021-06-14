@@ -14,7 +14,7 @@ void Game::newGame(){
          board[i][j] = initial_board[i][j];
       }
    }
-   printBoard();
+   //printBoard();
 }
 
 bool Game::gameOver(){
