@@ -10,3 +10,5 @@ build/checkers.exe
 build/CMakeFiles/checkers.dir/checkers.cpp.obj
 build/CMakeFiles/checkers.dir/main.cpp.obj
 build/CMakeFiles/checkers.dir/objects.a
+
+build/
