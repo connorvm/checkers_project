@@ -1,0 +1,12 @@
+C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\mingw32-make.exe all -f "C:\CONNOR\C++Path\chess_console\source\makefile" --dry-run --keep-going --print-directory
+mingw32-make: Entering directory 'c:/CONNOR/C++Path/checkers_project'
+g++    -c -o main.o main.cpp
+ 
+mingw32-make: *** No rule to make target 'user_interface.cpp', needed by 'user_interface.o'.
+mingw32-make: *** No rule to make target 'user_interface.h', needed by 'user_interface.o'.
+mingw32-make: *** No rule to make target 'chess.cpp', needed by 'chess.o'.
+ 
+mingw32-make: Leaving directory 'c:/CONNOR/C++Path/checkers_project'
+ 
+mingw32-make: *** No rule to make target 'chess.h', needed by 'chess.o'.
+ 

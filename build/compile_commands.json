@@ -1,0 +1,12 @@
+[
+{
+  "directory": "C:/CONNOR/C++Path/checkers_project/build",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe   -g -std=gnu++11 -o CMakeFiles\\checkers.dir\\checkers.cpp.obj -c C:\\CONNOR\\C++Path\\checkers_project\\checkers.cpp",
+  "file": "C:/CONNOR/C++Path/checkers_project/checkers.cpp"
+},
+{
+  "directory": "C:/CONNOR/C++Path/checkers_project/build",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe   -g -std=gnu++11 -o CMakeFiles\\checkers.dir\\main.cpp.obj -c C:\\CONNOR\\C++Path\\checkers_project\\main.cpp",
+  "file": "C:/CONNOR/C++Path/checkers_project/main.cpp"
+}
+]
