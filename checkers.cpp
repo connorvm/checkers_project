@@ -53,6 +53,10 @@ char Game::getColorPieceAtPosition(int row, int column){
    return board[row][column];
 }
 
+// enum Checkers::Direction Game::getDirectionOfMovingPiece(){
+//    return Direction;
+// }
+
 void Game::movePiece(Position present, Position future){
    // First, get the piece that needs to be moved
    char curr_piece = getPieceAtPosition(present);
@@ -66,9 +70,28 @@ void Game::movePiece(int curr_row, int curr_column, int row, int column) {
 
    if(future_spot != 0x20) { //There is a piece where current piece is trying to move
       if(future_spot != curr_piece) { //If where you are trying to move has the other color piece there, jump it
-         board[row][column] = 0x20;
-         row++;
-         column++;
+         if(board[row][column] == 'B') numberOfJumpedB++;
+         if(board[row][column] == 'W') numberOfJumpedW++;
+         board[row][column] = 0x20; //Clear the piece you jumped
+
+         //Which direction you trying to move?
+         if(row < curr_row && column < curr_column) {
+            // Going up_left
+            row--;
+            column--;
+         } else if(row < curr_row && column > curr_column) {
+            // Going up_left
+            row--;
+            column++;
+         } else if(row > curr_row && column < curr_column) {
+            // Going up_left
+            row++;
+            column--;
+         } else if(row > curr_row && column > curr_column) {
+            // Going up_left
+            row++;
+            column++;
+         }
          board[row][column] = curr_piece;
       } else { //If where you are trying to go is your color, can't do that
          cout << "Can not move to a space already occupied by your color\n";
@@ -77,6 +100,8 @@ void Game::movePiece(int curr_row, int curr_column, int row, int column) {
       board[row][column] = curr_piece;
       board[curr_row][curr_column] = 0x20;
    }
+   cout << "Number of Jumped B: " << numberOfJumpedB << endl;
+   cout << "Number of Jumped W: " << numberOfJumpedW << endl;
 }
 
 char Game::getPieceAtPosition(Position position){

@@ -34,12 +34,15 @@ class Game : Checkers{
         char getColorPieceAtPosition(int row, int column);
         void newGame();
         bool gameOver();
+        int numberOfJumpedB = 0;
+        int numberOfJumpedW = 0;
 
         //for quicker testing, print out simple board
         void printBoard();
 
         void movePiece(Position present, Position future);
         void movePiece(int curr_row, int curr_column, int row, int column);
+        // enum Direction getDirectionOfMovingPiece();
         char getPieceAtPosition(Position position);   
 
     private:
