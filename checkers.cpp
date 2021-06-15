@@ -230,8 +230,8 @@ void Game::turn(){
 
    curr_piece_position = getCoordinates(curr_piece);
    future_spot_position = getCoordinates(future_spot);
-   cout << curr_piece_position.row << ", " << curr_piece_position.column << endl;
-   cout << future_spot_position.row << ", " << future_spot_position.column << endl;
+   // cout << curr_piece_position.row << ", " << curr_piece_position.column << endl;
+   // cout << future_spot_position.row << ", " << future_spot_position.column << endl;
 
    movePiece(curr_piece_position, future_spot_position);
    
