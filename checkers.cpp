@@ -60,7 +60,49 @@ char Game::getColorPieceAtPosition(int row, int column){
 void Game::movePiece(Position present, Position future){
    // First, get the piece that needs to be moved
    char curr_piece = getPieceAtPosition(present);
+   // Next, get future_spot of moving piece
+   char future_spot = getPieceAtPosition(future);
    
+   if(future_spot != 0x20) { //There is a piece where current piece is trying to move
+      if(future_spot != curr_piece) { //If where you are trying to move has the other color piece there, jump it
+         if(future_spot == 'B') numberOfJumpedB++;
+         if(future_spot == 'W') numberOfJumpedW++;
+         setPieceAtPosition(future, 0x20); //Clear the piece you jumped
+
+         //Which direction you trying to move?
+         if(future.row < present.row && future.column < present.column) {
+            // Going up_left
+            future.row--;
+            future.column--;
+         } else if(future.row < present.row && future.column > present.column) {
+            // Going up_left
+            future.row--;
+            future.column++;
+         } else if(future.row > present.row && future.column < present.column) {
+            // Going up_left
+            future.row++;
+            future.column--;
+         } else if(future.row > present.row && future.column > present.column) {
+            // Going up_left
+            future.row++;
+            future.column++;
+         }
+         setPieceAtPosition(future, curr_piece);
+         // board[row][column] = curr_piece;
+         setPieceAtPosition(present, 0x20);
+         // board[curr_row][curr_column] = 0x20;
+      } else { //If where you are trying to go is your color, can't do that
+         cout << "Can not move to a space already occupied by your color\n";
+      }
+   } else {
+      // board[row][column] = curr_piece;
+      setPieceAtPosition(future, curr_piece);
+      // board[curr_row][curr_column] = 0x20;
+      setPieceAtPosition(present, 0x20);
+   }
+   cout << "---------------------------------------" << endl;
+   cout << "Number of Jumped B: " << numberOfJumpedB << endl;
+   cout << "Number of Jumped W: " << numberOfJumpedW << endl;
 
 }
 
@@ -188,15 +230,21 @@ void Game::turn(){
 
    curr_piece_position = getCoordinates(curr_piece);
    future_spot_position = getCoordinates(future_spot);
-
    cout << curr_piece_position.row << ", " << curr_piece_position.column << endl;
    cout << future_spot_position.row << ", " << future_spot_position.column << endl;
+
+   movePiece(curr_piece_position, future_spot_position);
+   
 
 
 }
 
 char Game::getPieceAtPosition(Position position){
    return board[position.row][position.column];
+}
+
+void Game::setPieceAtPosition(Position position, char c){
+   board[position.row][position.column] = c;
 }
 
 void Board::printLine(int iLine, int iColor1, int iColor2, Game& game){
@@ -259,17 +307,18 @@ void Board::printLine(int iLine, int iColor1, int iColor2, Game& game){
 }
 
 void Board::printBoard(Game& game){
-    cout << "   A     B     C     D     E     F     G     H\n\n";
+   cout << "   A     B     C     D     E     F     G     H\n\n";
 
-    for(int iLine = 7; iLine >= 0; iLine--) {
-        if (iLine%2 == 0) { //iLine is even
-            //Line starting with black
-            printLine(iLine, BLACK_SQUARE, WHITE_SQUARE, game);
-        } else {
-            // Line starting with white
-            printLine(iLine, WHITE_SQUARE, BLACK_SQUARE, game);
-        }
-    }
+   for(int iLine = 7; iLine >= 0; iLine--) {
+      if (iLine%2 == 0) { //iLine is even
+         //Line starting with black
+         printLine(iLine, BLACK_SQUARE, WHITE_SQUARE, game);
+      } else {
+         // Line starting with white
+         printLine(iLine, WHITE_SQUARE, BLACK_SQUARE, game);
+      }
+   }
+   cout << "   A     B     C     D     E     F     G     H\n\n";
 }
 
 

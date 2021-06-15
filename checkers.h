@@ -47,6 +47,7 @@ class Game : Checkers{
         void movePiece(int curr_row, int curr_column, int row, int column);
         // enum Direction getDirectionOfMovingPiece();
         char getPieceAtPosition(Position position);
+        void setPieceAtPosition(Position position, char c);
         Position getCoordinates(string spot);
         void turn();
 

@@ -34,7 +34,7 @@ int main() {
         game.turn();
         // game.movePiece(curr_row, curr_column, row, column);
         // game.printBoard();
-        // board.printBoard(game);
+        board.printBoard(game);
         game_over = game.gameOver();
     }
 
