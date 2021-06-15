@@ -99,10 +99,11 @@ void Game::movePiece(Position present, Position future){
          // board[row][column] = curr_piece;
          setPieceAtPosition(present, 0x20);
          // board[curr_row][curr_column] = 0x20;
+         newSpot = future;
       } else { //If where you are trying to go is your color, can't do that
          cout << "Can not move to a space already occupied by your color\n";
       }
-   } else {
+   } else { //There isn't a piece where current piece is trying to move
       // board[row][column] = curr_piece;
       setPieceAtPosition(future, curr_piece);
       // board[curr_row][curr_column] = 0x20;
@@ -251,8 +252,10 @@ void Game::turn(){
    // cout << future_spot_position.row << ", " << future_spot_position.column << endl;
 
    movePiece(curr_piece_position, future_spot_position);
-   
-   // checkForJump(newSpot);
+
+   // cout << "newSpot: _" << getPieceAtPosition(newSpot) << "_" << endl;
+   bool check = checkForJump(newSpot);
+   cout << "Check for jump = " << check << endl;
 
 
 }
@@ -275,28 +278,52 @@ bool Game::checkForJump(Position position){
    //No kings yet, so only need to check "forward" of the piece
    //Find out what piece we're checking for to know which direction to check
    char piece = getPieceAtPosition(position);
+   cout << "Piece in checkForJump: _" << piece << "_" << endl;
    if(piece == 'B'){
       // Check for B -> down_left
       // future.row--;
       // future.column--;
       if(getPieceAtPosition(down_left_B) == 'W'){
          //Also need to check that spot where piece will land is clear
-         return true;
+         down_left_B.row--;
+         down_left_B.column--;
+         if(getPieceAtPosition(down_left_B) != 0x20) return false;
+         else return true;
       }
-
       // Check for B -> down_right
       // future.row--;
       // future.column++;
-      return 0;
-   } else if(piece == 'W'){
+      if(getPieceAtPosition(down_right_B) == 'W'){
+         //Also need to check that spot where piece will land is clear
+         down_right_B.row--;
+         down_right_B.column++;
+         if(getPieceAtPosition(down_right_B) != 0x20) return false;
+         else return true;
+      }
+   }
+   else if(piece == 'W'){
       // Check for W -> up_left
       // future.row++;
       // future.column--;
+      if(getPieceAtPosition(up_left_W) == 'B'){
+         //Also need to check that spot where piece will land is clear
+         up_left_W.row++;
+         up_left_W.column--;
+         if(getPieceAtPosition(up_left_W) != 0x20) return false;
+         else return true;
+      }
       // check for W -> up_right
       // future.row++;
       // future.column++;
-
-   } else{
+      if(getPieceAtPosition(up_right_W) == 'B'){
+         //Also need to check that spot where piece will land is clear
+         up_right_W.row++;
+         up_right_W.column++;
+         if(getPieceAtPosition(up_right_W) != 0x20) return false;
+         else return true;
+      }
+   }
+   else{
       cout << "ERROR in checkForJump function\n";
       return 0;
    }
