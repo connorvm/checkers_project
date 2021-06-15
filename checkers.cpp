@@ -101,8 +101,64 @@ void Game::movePiece(int curr_row, int curr_column, int row, int column) {
       board[row][column] = curr_piece;
       board[curr_row][curr_column] = 0x20;
    }
+   cout << "---------------------------------------" << endl;
    cout << "Number of Jumped B: " << numberOfJumpedB << endl;
    cout << "Number of Jumped W: " << numberOfJumpedW << endl;
+}
+
+Game::Position Game::getCoordinates(string spot){
+   char row = spot[0];
+   int column = spot[1];
+   Position position;
+
+   switch(row) {
+      case 'A':
+         position.row = 0;
+         break;
+      case 'B':
+         position.row = 1;
+         break;
+      case 'C':
+         position.row = 2;
+         break;
+      case 'D':
+         position.row = 3;
+         break;
+      case 'E':
+         position.row = 4;
+         break;
+      case 'F':
+         position.row = 5;
+         break;
+      case 'G':
+         position.row = 6;
+         break;
+      case 'H':
+         position.row = 7;
+         break;
+      default:
+         cout << "Invalid column choice." << endl;
+   }
+   position.column = column;
+   return position;
+}
+
+void Game::turn(){
+   int curr_row, curr_column, row, column;
+   string curr_piece, future_spot;
+   Position curr_piece_positiion;
+   Position future_spot_position;
+
+   cout << "What piece do you want to move? -> ";
+   cin >> curr_piece;
+   cout << "Where do you want to move? -> ";
+   cin >> future_spot;
+   cout << endl;
+
+   Position curr_piece_position = getCoordinates(curr_piece);
+   Position future_spot_position = getCoordinates(future_spot);
+
+
 }
 
 char Game::getPieceAtPosition(Position position){

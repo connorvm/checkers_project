@@ -13,6 +13,7 @@ int main() {
     bool game_over = game.gameOver();
     int choice;
     int curr_row, curr_column, row, column;
+    string curr_piece, future_spot;
     game.newGame();
     board.printBoard(game);
     game_over = false;
@@ -24,19 +25,13 @@ int main() {
         //     game_over = true;
         //     break;
         // }
-        // cout << "What piece would you like to move? Row: ";
-        // cin >> curr_row;
-        // cout << "   Column: ";
-        // cin >> curr_column;
-        // cout << "Where do you want to move? Row: ";
-        // cin >> row;
-        // cout << "   Column: ";
-        // cin >> column;
-        cout << "What piece do you want to move? Row, column -> ";
-        cin >> curr_row >> curr_column;
-        cout << "Where do you want to move? Row, column -> ";
-        cin >> row >> column;
-        cout << endl;
+
+        // cout << "What piece do you want to move? Row, column -> ";
+        // cin >> curr_row >> curr_column;
+        // cout << "Where do you want to move? Row, column -> ";
+        // cin >> row >> column;
+        // cout << endl;
+        game.turn();
         game.movePiece(curr_row, curr_column, row, column);
         // game.printBoard();
         board.printBoard(game);

@@ -43,7 +43,11 @@ class Game : Checkers{
         void movePiece(Position present, Position future);
         void movePiece(int curr_row, int curr_column, int row, int column);
         // enum Direction getDirectionOfMovingPiece();
-        char getPieceAtPosition(Position position);   
+        char getPieceAtPosition(Position position);
+        Position getCoordinates(string spot);
+        void turn();
+
+        void printScore();
 
     private:
         char board[8][8];
