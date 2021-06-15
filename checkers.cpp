@@ -156,27 +156,35 @@ Game::Position Game::getCoordinates(string spot){
 
    switch(row) {
       case 'A':
+      case 'a':
          position.column = 0;
          break;
       case 'B':
+      case 'b':
          position.column = 1;
          break;
       case 'C':
+      case 'c':
          position.column = 2;
          break;
       case 'D':
+      case 'd':
          position.column = 3;
          break;
       case 'E':
+      case 'e':
          position.column = 4;
          break;
       case 'F':
+      case 'f':
          position.column = 5;
          break;
       case 'G':
+      case 'g':
          position.column = 6;
          break;
       case 'H':
+      case 'h':
          position.column = 7;
          break;
       default:
