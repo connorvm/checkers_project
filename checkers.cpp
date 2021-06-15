@@ -71,19 +71,27 @@ void Game::movePiece(Position present, Position future){
 
          //Which direction you trying to move?
          if(future.row < present.row && future.column < present.column) {
-            // Going up_left
+            // Going 
+            cout << "Here: row-- and column--\n";
+            //For B -> down_left
             future.row--;
             future.column--;
          } else if(future.row < present.row && future.column > present.column) {
-            // Going up_left
+            // Going 
+            cout << "Here: row-- and column++\n";
+            //For B -> down_right
             future.row--;
             future.column++;
          } else if(future.row > present.row && future.column < present.column) {
-            // Going up_left
+            // Going 
+            cout << "Here: row++ and column--\n";
+            //For W -> up_left
             future.row++;
             future.column--;
          } else if(future.row > present.row && future.column > present.column) {
-            // Going up_left
+            // Going 
+            cout << "Here: row++ and column++\n";
+            //For W -> up_right
             future.row++;
             future.column++;
          }
@@ -99,6 +107,7 @@ void Game::movePiece(Position present, Position future){
       setPieceAtPosition(future, curr_piece);
       // board[curr_row][curr_column] = 0x20;
       setPieceAtPosition(present, 0x20);
+      newSpot = future;
    }
    cout << "---------------------------------------" << endl;
    cout << "Number of Jumped B: " << numberOfJumpedB << endl;
@@ -243,8 +252,54 @@ void Game::turn(){
 
    movePiece(curr_piece_position, future_spot_position);
    
+   // checkForJump(newSpot);
 
 
+}
+
+bool Game::checkForJump(Position position){
+   Position down_left_B;
+   down_left_B.row = position.row--;
+   down_left_B.column = position.column--;
+   Position down_right_B;
+   down_right_B.row = position.row--;
+   down_right_B.column = position.column++;
+   Position up_left_W;
+   up_left_W.row = position.row++;
+   up_left_W.column = position.column--;
+   Position up_right_W;
+   up_right_W.row = position.row++;
+   up_right_W.column = position.column++;
+   //Check if the piece is a king piece :: TODO LATER
+
+   //No kings yet, so only need to check "forward" of the piece
+   //Find out what piece we're checking for to know which direction to check
+   char piece = getPieceAtPosition(position);
+   if(piece == 'B'){
+      // Check for B -> down_left
+      // future.row--;
+      // future.column--;
+      if(getPieceAtPosition(down_left_B) == 'W'){
+         //Also need to check that spot where piece will land is clear
+         return true;
+      }
+
+      // Check for B -> down_right
+      // future.row--;
+      // future.column++;
+      return 0;
+   } else if(piece == 'W'){
+      // Check for W -> up_left
+      // future.row++;
+      // future.column--;
+      // check for W -> up_right
+      // future.row++;
+      // future.column++;
+
+   } else{
+      cout << "ERROR in checkForJump function\n";
+      return 0;
+   }
 }
 
 char Game::getPieceAtPosition(Position position){

@@ -39,6 +39,7 @@ class Game : Checkers{
         bool gameOver();
         int numberOfJumpedB = 0;
         int numberOfJumpedW = 0;
+        Position newSpot;
 
         //for quicker testing, print out simple board
         void printBoard();
@@ -50,6 +51,7 @@ class Game : Checkers{
         void setPieceAtPosition(Position position, char c);
         Position getCoordinates(string spot);
         void turn();
+        bool checkForJump(Position present);
 
         void printScore();
 

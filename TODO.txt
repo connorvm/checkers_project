@@ -15,3 +15,4 @@ DONE:
 Add support for accepting commands based on the actual checkers board, meaning
     instead of indicating pieces by row and column numbers, have support
     for commands like "B4 to C3".
+    -> Added support for lowercase coordinates

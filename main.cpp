@@ -12,8 +12,6 @@ int main() {
     cout << "Welcome to checkers!\n\n";
     bool game_over = game.gameOver();
     int choice;
-    int curr_row, curr_column, row, column;
-    string curr_piece, future_spot;
     game.newGame();
     board.printBoard(game);
     game_over = false;
