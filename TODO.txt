@@ -1,5 +1,7 @@
 TODO:
-Checkers rules: https://simple.wikipedia.org/wiki/Checkers
+Add support for accepting commands based on the actual checkers board, meaning
+    instead of indicating pieces by row and column numbers, have support
+    for commands like "B4 to C3".
 Make game more turn based -> Add player 1 and player 2 support
 Increase "menu" capability
     -> Check how many pieces have been stolen
@@ -7,3 +9,5 @@ Increase "menu" capability
 Make it so that if a piece can jump an oppenents piece, it will. Checker rules
     state that if a piece can be jumped, it must be jumped.
 Eventually add support for kinging(doubling) a piece
+
+Checkers rules: https://simple.wikipedia.org/wiki/Checkers

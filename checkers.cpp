@@ -93,6 +93,7 @@ void Game::movePiece(int curr_row, int curr_column, int row, int column) {
             column++;
          }
          board[row][column] = curr_piece;
+         board[curr_row][curr_column] = 0x20;
       } else { //If where you are trying to go is your color, can't do that
          cout << "Can not move to a space already occupied by your color\n";
       }

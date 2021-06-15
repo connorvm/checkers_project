@@ -1,3 +1,0 @@
-C:/CONNOR/C++Path/checkers_project/build/CMakeFiles/rebuild_cache.dir
-C:/CONNOR/C++Path/checkers_project/build/CMakeFiles/checkers.dir
-C:/CONNOR/C++Path/checkers_project/build/CMakeFiles/edit_cache.dir
