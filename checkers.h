@@ -1,3 +1,6 @@
+#include <string>
+using namespace std;
+
 class Checkers {
     public:
         static bool isWhitePiece();

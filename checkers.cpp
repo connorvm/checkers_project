@@ -108,45 +108,76 @@ void Game::movePiece(int curr_row, int curr_column, int row, int column) {
 
 Game::Position Game::getCoordinates(string spot){
    char row = spot[0];
-   int column = spot[1];
+   char column = spot[1];
+   // cout << spot[1];
    Position position;
 
    switch(row) {
       case 'A':
-         position.row = 0;
+         position.column = 0;
          break;
       case 'B':
-         position.row = 1;
+         position.column = 1;
          break;
       case 'C':
-         position.row = 2;
+         position.column = 2;
          break;
       case 'D':
-         position.row = 3;
+         position.column = 3;
          break;
       case 'E':
-         position.row = 4;
+         position.column = 4;
          break;
       case 'F':
-         position.row = 5;
+         position.column = 5;
          break;
       case 'G':
-         position.row = 6;
+         position.column = 6;
          break;
       case 'H':
-         position.row = 7;
+         position.column = 7;
          break;
       default:
          cout << "Invalid column choice." << endl;
    }
-   position.column = column;
+
+   switch(column){
+      case '1':
+         position.row = 0;
+         break;
+      case '2':
+         position.row = 1;
+         break;
+      case '3':
+         position.row = 2;
+         break;
+      case '4':
+         position.row = 3;
+         break;
+      case '5':
+         position.row = 4;
+         break;
+      case '6':
+         position.row = 5;
+         break;
+      case '7':
+         position.row = 6;
+         break;
+      case '8':
+         position.row = 7;
+         break;
+      default:
+         cout << "Invalid row choice." << endl;
+   }
+   // cout << "column: " << column << endl;
+   
    return position;
 }
 
 void Game::turn(){
    int curr_row, curr_column, row, column;
    string curr_piece, future_spot;
-   Position curr_piece_positiion;
+   Position curr_piece_position;
    Position future_spot_position;
 
    cout << "What piece do you want to move? -> ";
@@ -155,8 +186,11 @@ void Game::turn(){
    cin >> future_spot;
    cout << endl;
 
-   Position curr_piece_position = getCoordinates(curr_piece);
-   Position future_spot_position = getCoordinates(future_spot);
+   curr_piece_position = getCoordinates(curr_piece);
+   future_spot_position = getCoordinates(future_spot);
+
+   cout << curr_piece_position.row << ", " << curr_piece_position.column << endl;
+   cout << future_spot_position.row << ", " << future_spot_position.column << endl;
 
 
 }
