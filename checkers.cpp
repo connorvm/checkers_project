@@ -255,7 +255,10 @@ void Game::turn(){
 
    // cout << "newSpot: _" << getPieceAtPosition(newSpot) << "_" << endl;
    bool check = checkForJump(newSpot);
-   cout << "Check for jump = " << check << endl;
+   while(check != false) {
+      turn();
+   }
+   cout << "End of current players turn\n\n";
 
 
 }
@@ -273,18 +276,6 @@ bool Game::checkForJump(Position position){
    Position up_right_W;
    up_right_W.row = position.row + 1;
    up_right_W.column = position.column + 1;
-   // Position down_left_B;
-   // down_left_B.row = position.row + 1;
-   // down_left_B.column = position.column + 1;
-   // Position down_right_B;
-   // down_right_B.row = position.row + 1;
-   // down_right_B.column = position.column - 1;
-   // Position up_left_W;
-   // up_left_W.row = position.row + 1;
-   // up_left_W.column = position.column - 1;
-   // Position up_right_W;
-   // up_right_W.row = position.row - 1;
-   // up_right_W.column = position.column - 1;
 
    bool jump_left = false;
    bool jump_right = false;
