@@ -36,6 +36,22 @@ bool Game::gameOver(){
    } else return false;
 }
 
+char Game::getWinner(){
+   if(numberOfJumpedB > numberOfJumpedW){
+      cout << "White pieces won!\n";
+      return 'W';
+   } else if(numberOfJumpedW > numberOfJumpedB){
+      cout << "Black pieces won!\n";
+      return 'B';
+   } else if(numberOfJumpedB == numberOfJumpedW){
+      cout << "Draw\n";
+      return 'D';
+   } else {
+      cout << "ERROR in getWinner()\n";
+      return 'E';
+   }
+}
+
 void Game::printBoard(){
    cout << "  ";
    for(int k = 0; k < 8; k++) {
@@ -72,25 +88,25 @@ void Game::movePiece(Position present, Position future){
          //Which direction you trying to move?
          if(future.row < present.row && future.column < present.column) {
             // Going 
-            cout << "Here: row-- and column--\n";
+            // cout << "Here: row-- and column--\n";
             //For B -> down_left
             future.row--;
             future.column--;
          } else if(future.row < present.row && future.column > present.column) {
             // Going 
-            cout << "Here: row-- and column++\n";
+            // cout << "Here: row-- and column++\n";
             //For B -> down_right
             future.row--;
             future.column++;
          } else if(future.row > present.row && future.column < present.column) {
             // Going 
-            cout << "Here: row++ and column--\n";
+            // cout << "Here: row++ and column--\n";
             //For W -> up_left
             future.row++;
             future.column--;
          } else if(future.row > present.row && future.column > present.column) {
             // Going 
-            cout << "Here: row++ and column++\n";
+            // cout << "Here: row++ and column++\n";
             //For W -> up_right
             future.row++;
             future.column++;
@@ -256,7 +272,17 @@ void Game::turn(){
    // cout << "newSpot: _" << getPieceAtPosition(newSpot) << "_" << endl;
    bool check = checkForJump(newSpot);
    while(check != false) {
-      turn();
+      cout << "What piece do you want to move? -> ";
+      cin >> curr_piece;
+      cout << "Where do you want to move? -> ";
+      cin >> future_spot;
+      cout << endl;
+
+      curr_piece_position = getCoordinates(curr_piece);
+      future_spot_position = getCoordinates(future_spot);
+
+      movePiece(curr_piece_position, future_spot_position);
+      check = checkForJump(newSpot);
    }
    cout << "End of current players turn\n\n";
 

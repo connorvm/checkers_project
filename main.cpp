@@ -36,6 +36,8 @@ int main() {
         game_over = game.gameOver();
     }
 
+    game.getWinner();
+
     // board.printBoard(game);
     return -1;
 }

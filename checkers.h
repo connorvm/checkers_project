@@ -37,6 +37,7 @@ class Game : Checkers{
         char getColorPieceAtPosition(int row, int column);
         void newGame();
         bool gameOver();
+        char getWinner();
         int numberOfJumpedB = 0;
         int numberOfJumpedW = 0;
         Position newSpot;
