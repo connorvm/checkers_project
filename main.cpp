@@ -30,8 +30,28 @@ int main() {
         // cin >> row >> column;
         // cout << endl;
         game.turn();
-        // game.movePiece(curr_row, curr_column, row, column);
-        // game.printBoard();
+        bool check = game.checkForJump(game.newSpot);
+        cout << "Check = " << check << endl;
+
+        while(check != false) {
+            int curr_row, curr_column, row, column;
+            string curr_piece, future_spot;
+            // game.curr_piece_position;
+            // game.future_spot_position;
+            cout << "What piece do you want to move? -> ";
+            cin >> curr_piece;
+            cout << "Where do you want to move? -> ";
+            cin >> future_spot;
+            cout << endl;
+
+            game.curr_piece_position = game.getCoordinates(curr_piece);
+            game.future_spot_position = game.getCoordinates(future_spot);
+
+            game.movePiece(game.curr_piece_position, game.future_spot_position);
+            check = game.checkForJump(game.newSpot);
+        }
+
+        cout << "End of current players turn\n\n";
         board.printBoard(game);
         game_over = game.gameOver();
     }

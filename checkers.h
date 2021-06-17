@@ -41,6 +41,8 @@ class Game : Checkers{
         int numberOfJumpedB = 0;
         int numberOfJumpedW = 0;
         Position newSpot;
+        Position curr_piece_position;
+        Position future_spot_position;
 
         //for quicker testing, print out simple board
         void printBoard();

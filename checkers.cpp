@@ -270,22 +270,23 @@ void Game::turn(){
    movePiece(curr_piece_position, future_spot_position);
 
    // cout << "newSpot: _" << getPieceAtPosition(newSpot) << "_" << endl;
-   bool check = checkForJump(newSpot);
-   while(check != false) {
-      cout << "What piece do you want to move? -> ";
-      cin >> curr_piece;
-      cout << "Where do you want to move? -> ";
-      cin >> future_spot;
-      cout << endl;
+   // bool check = checkForJump(newSpot);
+   // cout << "Check = " << check << endl;
+   // while(check != false) {
+   //    cout << "What piece do you want to move? -> ";
+   //    cin >> curr_piece;
+   //    cout << "Where do you want to move? -> ";
+   //    cin >> future_spot;
+   //    cout << endl;
 
-      curr_piece_position = getCoordinates(curr_piece);
-      future_spot_position = getCoordinates(future_spot);
+   //    curr_piece_position = getCoordinates(curr_piece);
+   //    future_spot_position = getCoordinates(future_spot);
 
-      movePiece(curr_piece_position, future_spot_position);
-      check = checkForJump(newSpot);
-   }
-   cout << "End of current players turn\n\n";
+   //    movePiece(curr_piece_position, future_spot_position);
+   //    check = checkForJump(newSpot);
+   // }
 
+   // cout << "End of current players turn\n\n";
 
 }
 
@@ -486,7 +487,3 @@ void Board::printBoard(Game& game){
    }
    cout << "   A     B     C     D     E     F     G     H\n\n";
 }
-
-
-
-
