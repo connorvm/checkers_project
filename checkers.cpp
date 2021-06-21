@@ -312,19 +312,19 @@ bool Game::checkForJump(Position position){
    //Find out what piece we're checking for to know which direction to check
    char piece = getPieceAtPosition(position);
    cout << "Piece in checkForJump: " << piece << endl;
-   cout << "   Coordinates of piece -> Row: " << position.row << ", Column: " << position.column << endl;
+   // cout << "   Coordinates of piece -> Row: " << position.row << ", Column: " << position.column << endl;
    if(piece == 'B'){
       cout << "\nIn piece == 'B'\n";
       // Check for B -> down_left
       if(getPieceAtPosition(down_left_B) == 'W'){
-         cout << "In down_left_B == 'W'\n";
+         // cout << "In down_left_B == 'W'\n";
          //Also need to check that spot where piece will land is clear
-         cout << "   OG down_left_B coordinates -> Row: " << down_left_B.row << ", Column: " << down_left_B.column << endl; 
+         // cout << "   OG down_left_B coordinates -> Row: " << down_left_B.row << ", Column: " << down_left_B.column << endl; 
          // down_left_B.row--;
          // down_left_B.column--;
          down_left_B.row--;
          down_left_B.column--;
-         cout << "   New down_left_B coordinates -> Row: " << down_left_B.row << ", Column: " << down_left_B.column << endl;
+         // cout << "   New down_left_B coordinates -> Row: " << down_left_B.row << ", Column: " << down_left_B.column << endl;
          if(getPieceAtPosition(down_left_B) != 0x20){
             cout << "   Can not jump down_left\n";
             jump_left = false;
@@ -336,14 +336,14 @@ bool Game::checkForJump(Position position){
       }
       // Check for B -> down_right
       if(getPieceAtPosition(down_right_B) == 'W'){
-         cout << "In down_right_B == 'W'\n";
+         // cout << "In down_right_B == 'W'\n";
          //Also need to check that spot where piece will land is clear
-         cout << "   OG down_right_B coordinates -> Row: " << down_right_B.row << ", Column: " << down_right_B.column << endl; 
+         // cout << "   OG down_right_B coordinates -> Row: " << down_right_B.row << ", Column: " << down_right_B.column << endl; 
          // down_right_B.row--;
          // down_right_B.column++;
          down_right_B.row--;
          down_right_B.column++;
-         cout << "   New down_right_B coordinates -> Row: " << down_right_B.row << ", Column: " << down_right_B.column << endl;
+         // cout << "   New down_right_B coordinates -> Row: " << down_right_B.row << ", Column: " << down_right_B.column << endl;
          if(getPieceAtPosition(down_right_B) != 0x20){
             cout << "   Can not jump down_right\n";
             jump_right = false;
@@ -356,18 +356,18 @@ bool Game::checkForJump(Position position){
    }
    else if(piece == 'W'){
       cout << "In piece == 'W'\n";
-      cout << "   Coordinates of piece -> Row: " << position.row << ", Column: " << position.column << endl;
+      // cout << "   Coordinates of piece -> Row: " << position.row << ", Column: " << position.column << endl;
       // Check for W -> up_left
-      cout << "   Piece up_left: " << getPieceAtPosition(up_left_W) << endl;
+      // cout << "   Piece up_left: " << getPieceAtPosition(up_left_W) << endl;
       if(getPieceAtPosition(up_left_W) == 'B'){
-         cout << "In up_left_W == 'B'\n";
+         // cout << "In up_left_W == 'B'\n";
          //Also need to check that spot where piece will land is clear
          // up_left_W.row++;
          // up_left_W.column--;
-         cout << "   OG up_left_W coordinates -> Row: " << up_left_W.row << ", Column: " << up_left_W.column << endl; 
+         // cout << "   OG up_left_W coordinates -> Row: " << up_left_W.row << ", Column: " << up_left_W.column << endl; 
          up_left_W.row--;
          up_left_W.column++;
-         cout << "   New up_left_W coordinates -> Row: " << up_left_W.row << ", Column: " << up_left_W.column << endl;
+         // cout << "   New up_left_W coordinates -> Row: " << up_left_W.row << ", Column: " << up_left_W.column << endl;
          if(getPieceAtPosition(up_left_W) != 0x20){
             cout << "   Can not jump up_left\n";
             jump_left = false;
@@ -378,16 +378,16 @@ bool Game::checkForJump(Position position){
          }
       }
       // check for W -> up_right
-      cout << "   Piece up_right: " << getPieceAtPosition(up_right_W) << endl;
+      // cout << "   Piece up_right: " << getPieceAtPosition(up_right_W) << endl;
       if(getPieceAtPosition(up_right_W) == 'B'){
-         cout << "In up_right_W == 'B'\n";
+         // cout << "In up_right_W == 'B'\n";
          //Also need to check that spot where piece will land is clear
-         cout << "   OG up_right_W coordinates -> Row: " << up_right_W.row << ", Column: " << up_right_W.column << endl;
+         // cout << "   OG up_right_W coordinates -> Row: " << up_right_W.row << ", Column: " << up_right_W.column << endl;
          // up_right_W.row--;
          // up_right_W.column--;
          up_right_W.row++;
          up_right_W.column++;
-         cout << "   New up_right_W coordinates -> Row: " << up_right_W.row << ", Column: " << up_right_W.column << endl;
+         // cout << "   New up_right_W coordinates -> Row: " << up_right_W.row << ", Column: " << up_right_W.column << endl;
          if(getPieceAtPosition(up_right_W) != 0x20){
             cout << "   Can not jump up_right\n";
             jump_right = false;
@@ -402,7 +402,10 @@ bool Game::checkForJump(Position position){
       cout << "ERROR in checkForJump function\n";
       return false;
    }
-   if(jump_left && jump_right == 0) cout << "Can NOT jump either direction\n";
+   if(jump_left == false && jump_right == false) {
+      cout << "jump_left = " << jump_left << ", jump_right = " << jump_right << endl;
+      cout << "Can NOT jump either direction\n";
+   }
    return jump_left || jump_right;
 }
 

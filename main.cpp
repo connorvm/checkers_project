@@ -31,9 +31,11 @@ int main() {
         // cout << endl;
         game.turn();
         bool check = game.checkForJump(game.newSpot);
-        cout << "Check = " << check << endl;
+        // cout << "Check = " << check << endl;
 
         while(check != false) {
+            board.printBoard(game);
+            if(check == true) cout << "Piece available to jump. Go again.\n";
             int curr_row, curr_column, row, column;
             string curr_piece, future_spot;
             // game.curr_piece_position;
@@ -48,6 +50,7 @@ int main() {
             game.future_spot_position = game.getCoordinates(future_spot);
 
             game.movePiece(game.curr_piece_position, game.future_spot_position);
+            // board.printBoard(game);
             check = game.checkForJump(game.newSpot);
         }
 
