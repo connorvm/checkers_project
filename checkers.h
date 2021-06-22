@@ -1,4 +1,6 @@
 #include <string>
+#include <iostream>
+#include "stdlib.h"
 using namespace std;
 
 class Checkers {
@@ -41,6 +43,7 @@ class Game : Checkers{
         int numberOfJumpedB = 0;
         int numberOfJumpedW = 0;
         Position newSpot;
+        Position previousPiece;
         Position curr_piece_position;
         Position future_spot_position;
 
@@ -66,4 +69,18 @@ class Board {
     public:
         void printBoard(Game& game);
         void printLine(int iLine, int iColor1, int iColor2, Game& game);
+};
+
+class Menu {
+    public:
+        void printMenu(){
+            int choice;
+            cout << "Welcome to Checkers!\n";
+            cout << "Would you like to play a game?  [1] Yes    [2] No\n";
+            cin >> choice;
+            if(choice == 2) {
+                cout << "Thanks for stopping by!" << endl;
+                exit(0);
+            }
+        };
 };
