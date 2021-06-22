@@ -6,6 +6,9 @@ Increase "menu" capability
 Make it so that if a piece can jump an oppenents piece, it will. Checker rules
     state that if a piece can be jumped, it must be jumped.
     -> Built checkForJump(), which returns true if a piece can jump again, and false if it can not.
+    ->TODO: Implement a way for a new turn to see if the next player can jump a piece at the start of a turn
+        -> Maybe make last moved piece a global variable called previousSpot?
+
 Eventually add support for kinging(doubling) a piece
 
 Checkers rules: https://simple.wikipedia.org/wiki/Checkers

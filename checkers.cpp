@@ -126,7 +126,8 @@ void Game::movePiece(Position present, Position future){
       setPieceAtPosition(present, 0x20);
       newSpot = future;
    }
-   cout << "---------------------------------------" << endl;
+   previousPiece = newSpot;
+   // cout << "---------------------------------------" << endl;
    cout << "Number of Jumped B: " << numberOfJumpedB << endl;
    cout << "Number of Jumped W: " << numberOfJumpedW << endl;
 
@@ -403,7 +404,7 @@ bool Game::checkForJump(Position position){
       return false;
    }
    if(jump_left == false && jump_right == false) {
-      cout << "jump_left = " << jump_left << ", jump_right = " << jump_right << endl;
+      // cout << "jump_left = " << jump_left << ", jump_right = " << jump_right << endl;
       cout << "Can NOT jump either direction\n";
    }
    return jump_left || jump_right;
