@@ -6,12 +6,14 @@ using namespace std;
 Board board;
 Game game;
 Checkers checkers;
+Menu menu;
 
 
 int main() {
-    cout << "Welcome to checkers!\n\n";
+    // cout << "Welcome to checkers!\n\n";
     bool game_over = game.gameOver();
-    int choice;
+    menu.printMenu();
+    // int choice;  //Used for menu (currently commented out)
     game.newGame();
     board.printBoard(game);
     game_over = false;
@@ -24,37 +26,33 @@ int main() {
         //     break;
         // }
 
-        // cout << "What piece do you want to move? Row, column -> ";
-        // cin >> curr_row >> curr_column;
-        // cout << "Where do you want to move? Row, column -> ";
-        // cin >> row >> column;
-        // cout << endl;
         game.turn();
         bool check = game.checkForJump(game.newSpot);
         // cout << "Check = " << check << endl;
 
-        while(check != false) {
+        while(check != false) { //loop while current piece can still jump
             board.printBoard(game);
             if(check == true) cout << "Piece available to jump. Go again.\n";
-            int curr_row, curr_column, row, column;
-            string curr_piece, future_spot;
-            // game.curr_piece_position;
-            // game.future_spot_position;
-            cout << "What piece do you want to move? -> ";
-            cin >> curr_piece;
-            cout << "Where do you want to move? -> ";
-            cin >> future_spot;
-            cout << endl;
+            // int curr_row, curr_column, row, column;
+            // string curr_piece, future_spot;
+            // // game.curr_piece_position;
+            // // game.future_spot_position;
+            // cout << "What piece do you want to move? -> ";
+            // cin >> curr_piece;
+            // cout << "Where do you want to move? -> ";
+            // cin >> future_spot;
+            // cout << endl;
 
-            game.curr_piece_position = game.getCoordinates(curr_piece);
-            game.future_spot_position = game.getCoordinates(future_spot);
+            // game.curr_piece_position = game.getCoordinates(curr_piece);
+            // game.future_spot_position = game.getCoordinates(future_spot);
 
-            game.movePiece(game.curr_piece_position, game.future_spot_position);
-            // board.printBoard(game);
+            // game.movePiece(game.curr_piece_position, game.future_spot_position);
+            game.turn();
             check = game.checkForJump(game.newSpot);
         }
 
-        cout << "End of current players turn\n\n";
+        cout << "End of current players turn\n---------------------------------------\n";
+        // cout << "---------------------------------------" << endl;
         board.printBoard(game);
         game_over = game.gameOver();
     }
