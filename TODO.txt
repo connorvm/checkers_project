@@ -14,6 +14,7 @@ TODO:
     ->Brute force method is to block every index that is a white spot
     ->There is probably a cleaner way
 
+
 Checkers rules: https://simple.wikipedia.org/wiki/Checkers
 
 -----------------------------------------------------------------------------------
@@ -23,3 +24,4 @@ DONE:
     instead of indicating pieces by row and column numbers, have support
     for commands like "B4 to C3".
     -> Added support for lowercase coordinates
+-Need to prevent a piece from jumping if some other piece is in the way

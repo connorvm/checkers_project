@@ -69,21 +69,19 @@ char Game::getColorPieceAtPosition(int row, int column){
    return board[row][column];
 }
 
-// enum Checkers::Direction Game::getDirectionOfMovingPiece(){
-//    return Direction;
-// }
-
-void Game::movePiece(Position present, Position future){
+bool Game::movePiece(Position present, Position future){
    // First, get the piece that needs to be moved
    char curr_piece = getPieceAtPosition(present);
    // Next, get future_spot of moving piece
    char future_spot = getPieceAtPosition(future);
+   Position temp = future;
+   bool moveSuccess = false;
    
    if(future_spot != 0x20) { //There is a piece where current piece is trying to move
       if(future_spot != curr_piece) { //If where you are trying to move has the other color piece there, jump it
          if(future_spot == 'B') numberOfJumpedB++;
          if(future_spot == 'W') numberOfJumpedW++;
-         setPieceAtPosition(future, 0x20); //Clear the piece you jumped
+         // setPieceAtPosition(future, 0x20); //Clear the piece you jumped
 
          //Which direction you trying to move?
          if(future.row < present.row && future.column < present.column) {
@@ -111,28 +109,36 @@ void Game::movePiece(Position present, Position future){
             future.row++;
             future.column++;
          }
-         setPieceAtPosition(future, curr_piece);
-         // board[row][column] = curr_piece;
-         setPieceAtPosition(present, 0x20);
-         // board[curr_row][curr_column] = 0x20;
-         newSpot = future;
-         jumpedAPiece = true;
-      } else { //If where you are trying to go is your color, can't do that
-         cout << "Can not move to a space already occupied by your color\n";
+
+         if(getPieceAtPosition(future) == 0x20) {
+            // If the spot to jump to is blank, then jump
+            setPieceAtPosition(temp, 0x20); //Clear the piece you jumped
+            setPieceAtPosition(future, curr_piece);
+            setPieceAtPosition(present, 0x20);
+            newSpot = future;
+            jumpedAPiece = true;
+            moveSuccess = true;
+         } else {
+            // Can't jump to a spot that is occupied
+            cout << "Cannot jump to an occupied space.\n";
+         }
+         
+      } else {
+         //If where you are trying to go is your color, can't do that
+         cout << "Can not move to a space already occupied by your color.\n";
       }
    } else { //There isn't a piece where current piece is trying to move
-      // board[row][column] = curr_piece;
       setPieceAtPosition(future, curr_piece);
-      // board[curr_row][curr_column] = 0x20;
       setPieceAtPosition(present, 0x20);
       newSpot = future;
       jumpedAPiece = false;
+      moveSuccess = true;  //piece was moved
    }
    previousPiece = newSpot;
    // cout << "---------------------------------------" << endl;
    // cout << "Number of Jumped B: " << numberOfJumpedB << endl;
    // cout << "Number of Jumped W: " << numberOfJumpedW << endl;
-
+   return moveSuccess;
 }
 
 void Game::movePiece(int curr_row, int curr_column, int row, int column) {
@@ -253,7 +259,7 @@ Game::Position Game::getCoordinates(string spot){
    return position;
 }
 
-void Game::turn(){
+bool Game::turn(){
    int curr_row, curr_column, row, column;
    string curr_piece, future_spot;
    Position curr_piece_position;
@@ -270,7 +276,10 @@ void Game::turn(){
    // cout << curr_piece_position.row << ", " << curr_piece_position.column << endl;
    // cout << future_spot_position.row << ", " << future_spot_position.column << endl;
 
-   movePiece(curr_piece_position, future_spot_position);
+   return movePiece(curr_piece_position, future_spot_position);
+   // while(move != true){
+   //    move = movePiece(curr_piece_position, future_spot_position);
+   // }
 
    // cout << "newSpot: _" << getPieceAtPosition(newSpot) << "_" << endl;
    // bool check = checkForJump(newSpot);

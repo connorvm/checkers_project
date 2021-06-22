@@ -51,13 +51,13 @@ class Game : Checkers{
         //for quicker testing, print out simple board
         void printBoard();
 
-        void movePiece(Position present, Position future);
+        bool movePiece(Position present, Position future);
         void movePiece(int curr_row, int curr_column, int row, int column);
         // enum Direction getDirectionOfMovingPiece();
         char getPieceAtPosition(Position position);
         void setPieceAtPosition(Position position, char c);
         Position getCoordinates(string spot);
-        void turn();
+        bool turn();
         bool checkForJump(Position present);
 
         void printScore();

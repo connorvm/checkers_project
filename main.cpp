@@ -26,7 +26,10 @@ int main() {
         //     break;
         // }
 
-        game.turn();
+        bool move = game.turn();
+        while (move != true){
+            move = game.turn();
+        }
         // bool check = game.checkForJump(game.newSpot);
         // cout << "Check = " << check << endl;
         if(checkers.jumpedAPiece == true){
