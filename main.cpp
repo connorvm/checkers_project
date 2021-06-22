@@ -27,34 +27,27 @@ int main() {
         // }
 
         game.turn();
-        bool check = game.checkForJump(game.newSpot);
+        // bool check = game.checkForJump(game.newSpot);
         // cout << "Check = " << check << endl;
+        if(checkers.jumpedAPiece == true){
+            //The player just jumped a piece, so it's still their turn
+            bool check = game.checkForJump(game.newSpot);
 
-        while(check != false) { //loop while current piece can still jump
-            board.printBoard(game);
-            if(check == true) cout << "Piece available to jump. Go again.\n";
-            // int curr_row, curr_column, row, column;
-            // string curr_piece, future_spot;
-            // // game.curr_piece_position;
-            // // game.future_spot_position;
-            // cout << "What piece do you want to move? -> ";
-            // cin >> curr_piece;
-            // cout << "Where do you want to move? -> ";
-            // cin >> future_spot;
-            // cout << endl;
-
-            // game.curr_piece_position = game.getCoordinates(curr_piece);
-            // game.future_spot_position = game.getCoordinates(future_spot);
-
-            // game.movePiece(game.curr_piece_position, game.future_spot_position);
-            game.turn();
-            check = game.checkForJump(game.newSpot);
+            while(check != false) { //loop while current piece can still jump
+                board.printBoard(game);
+                if(check == true) cout << "Piece available to jump. Go again.\n";
+            
+                game.turn();
+                check = game.checkForJump(game.newSpot);
+            }
         }
-
+        
         cout << "End of current players turn\n---------------------------------------\n";
         // cout << "---------------------------------------" << endl;
         board.printBoard(game);
+        // menu.printScore(game); //Don't want that option right now
         game_over = game.gameOver();
+        if(!game_over) cout << "Next player's turn.\n";
     }
 
     game.getWinner();

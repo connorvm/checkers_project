@@ -116,6 +116,7 @@ void Game::movePiece(Position present, Position future){
          setPieceAtPosition(present, 0x20);
          // board[curr_row][curr_column] = 0x20;
          newSpot = future;
+         jumpedAPiece = true;
       } else { //If where you are trying to go is your color, can't do that
          cout << "Can not move to a space already occupied by your color\n";
       }
@@ -125,11 +126,12 @@ void Game::movePiece(Position present, Position future){
       // board[curr_row][curr_column] = 0x20;
       setPieceAtPosition(present, 0x20);
       newSpot = future;
+      jumpedAPiece = false;
    }
    previousPiece = newSpot;
    // cout << "---------------------------------------" << endl;
-   cout << "Number of Jumped B: " << numberOfJumpedB << endl;
-   cout << "Number of Jumped W: " << numberOfJumpedW << endl;
+   // cout << "Number of Jumped B: " << numberOfJumpedB << endl;
+   // cout << "Number of Jumped W: " << numberOfJumpedW << endl;
 
 }
 

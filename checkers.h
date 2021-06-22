@@ -7,6 +7,7 @@ class Checkers {
     public:
         static bool isWhitePiece();
         static bool isBlackPiece();
+        bool jumpedAPiece;
 
         const char initial_board[8][8] = 
         {
@@ -76,11 +77,22 @@ class Menu {
         void printMenu(){
             int choice;
             cout << "Welcome to Checkers!\n";
-            cout << "Would you like to play a game?  [1] Yes    [2] No\n";
+            cout << "Would you like to play a game?  [1]Yes    [2]No\n";
             cin >> choice;
             if(choice == 2) {
                 cout << "Thanks for stopping by!" << endl;
                 exit(0);
+            }
+            cout << "Let's play!" << endl;
+        };
+
+        void printScore(Game& game){
+            int choice;
+            cout << "Would you like to see the score?  [1]Yes    [2]No\n";
+            cin >> choice;
+            if(choice == 1) {
+                cout << "Number of Jumped B: " << game.numberOfJumpedB << endl;
+                cout << "Number of Jumped W: " << game.numberOfJumpedW << endl;
             }
         };
 };
