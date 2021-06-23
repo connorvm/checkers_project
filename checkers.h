@@ -7,7 +7,6 @@ class Checkers {
     public:
         static bool isWhitePiece();
         static bool isBlackPiece();
-        bool jumpedAPiece;
 
         const char initial_board[8][8] = 
         {
@@ -60,6 +59,7 @@ class Game : Checkers{
         Position previousPiece;
         Position curr_piece_position;
         Position future_spot_position;
+        bool jumpedAPiece;
 
         //for quicker testing, print out simple board
         void printBoard();

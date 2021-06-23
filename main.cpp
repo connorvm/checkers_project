@@ -13,27 +13,21 @@ int main() {
     // cout << "Welcome to checkers!\n\n";
     bool game_over = game.gameOver();
     menu.printMenu();
-    // int choice;  //Used for menu (currently commented out)
     game.newGame();
     board.printBoard(game);
     game_over = false;
     while(game_over != true){
 
-        // cout << "Continue playing? y = 1 or n = 0";
-        // cin >> choice;
-        // if(choice == 0) {
-        //     game_over = true;
-        //     break;
-        // }
-
         bool move = game.turn();
-        while (move != true){
+        while (move != true){ //While move success is not true
             move = game.turn();
         }
         // bool check = game.checkForJump(game.newSpot);
         // cout << "Check = " << check << endl;
-        if(checkers.jumpedAPiece == true){
+        while(game.jumpedAPiece == true){
             //The player just jumped a piece, so it's still their turn
+            cout << "You jumped a piece, go again\n";
+            board.printBoard(game);
             bool check = game.checkForJump(game.newSpot);
 
             while(check != false) { //loop while current piece can still jump
@@ -43,6 +37,7 @@ int main() {
                 game.turn();
                 check = game.checkForJump(game.newSpot);
             }
+            game.turn();
         }
         
         cout << "End of current players turn\n---------------------------------------\n";

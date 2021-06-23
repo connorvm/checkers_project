@@ -1,7 +1,6 @@
 TODO:
 -Make game more turn based -> Add player 1 and player 2 support
 -Increase "menu" capability
-    -> Check how many pieces have been jumped
     -> Something else probably
 -Make it so that if a piece can jump an oppenents piece, it will. Checker rules
     state that if a piece can be jumped, it must be jumped.
@@ -10,9 +9,8 @@ TODO:
         -> Maybe make last moved piece a global variable called previousSpot?
 
 -Eventually add support for kinging(doubling) a piece
--Need to disable moving to a white space
-    ->Brute force method is to block every index that is a white spot
-    ->There is probably a cleaner way
+-After jumping, go again
+
 
 
 Checkers rules: https://simple.wikipedia.org/wiki/Checkers
@@ -25,3 +23,6 @@ DONE:
     for commands like "B4 to C3".
     -> Added support for lowercase coordinates
 -Need to prevent a piece from jumping if some other piece is in the way
+-Need to disable moving to a white space
+-Increase "menu" capability
+    -> Check how many pieces have been jumped

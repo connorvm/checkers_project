@@ -131,7 +131,6 @@ bool Game::movePiece(Position present, Position future){
             // Can't jump to a spot that is occupied
             cout << "Cannot jump to an occupied space.\n";
          }
-         
       } else {
          //If where you are trying to go is your color, can't do that
          cout << "Can not move to a space already occupied by your color.\n";
@@ -336,10 +335,10 @@ bool Game::checkForJump(Position position){
    //No kings yet, so only need to check "forward" of the piece
    //Find out what piece we're checking for to know which direction to check
    char piece = getPieceAtPosition(position);
-   cout << "Piece in checkForJump: " << piece << endl;
+   // cout << "Piece in checkForJump: " << piece << endl;
    // cout << "   Coordinates of piece -> Row: " << position.row << ", Column: " << position.column << endl;
    if(piece == 'B'){
-      cout << "\nIn piece == 'B'\n";
+      // cout << "\nIn piece == 'B'\n";
       // Check for B -> down_left
       if(getPieceAtPosition(down_left_B) == 'W'){
          // cout << "In down_left_B == 'W'\n";
@@ -380,7 +379,7 @@ bool Game::checkForJump(Position position){
       }
    }
    else if(piece == 'W'){
-      cout << "In piece == 'W'\n";
+      // cout << "In piece == 'W'\n";
       // cout << "   Coordinates of piece -> Row: " << position.row << ", Column: " << position.column << endl;
       // Check for W -> up_left
       // cout << "   Piece up_left: " << getPieceAtPosition(up_left_W) << endl;
