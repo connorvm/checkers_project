@@ -21,9 +21,24 @@ class Checkers {
             {0x20, 'B',  0x20, 'B',  0x20, 'B',  0x20, 'B'}
         };
 
-        struct Position {
+        struct Position 
+        {
             int row;
             int column;
+        };
+
+        // const Position *white_spaces = new Position[32];
+        
+        const Position white_spaces[32] = 
+        {
+            {0,1}, {0,3}, {0,5}, {0,7},
+            {1,0}, {1,2}, {1,4}, {1,6},
+            {2,1}, {2,3}, {2,5}, {2,7},
+            {3,0}, {3,2}, {3,4}, {3,6},
+            {4,1}, {4,3}, {4,5}, {4,7},
+            {5,0}, {5,2}, {5,4}, {5,6},
+            {6,1}, {6,3}, {6,5}, {6,7},
+            {7,0}, {7,2}, {7,4}, {7,6},
         };
 
         enum Direction {    
