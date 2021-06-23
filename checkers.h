@@ -27,8 +27,6 @@ class Checkers {
             int column;
         };
 
-        // const Position *white_spaces = new Position[32];
-        
         const Position white_spaces[32] = 
         {
             {0,1}, {0,3}, {0,5}, {0,7},

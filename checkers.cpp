@@ -76,6 +76,15 @@ bool Game::movePiece(Position present, Position future){
    char future_spot = getPieceAtPosition(future);
    Position temp = future;
    bool moveSuccess = false;
+   bool whiteSpace = false;
+   
+   //For loop here to check if future position is a white space
+   for(int i = 0; i < 32; i++){
+      if (future.row == white_spaces[i].row && future.column == white_spaces[i].column){
+         whiteSpace = true;
+      }
+      
+   }
    
    if(future_spot != 0x20) { //There is a piece where current piece is trying to move
       if(future_spot != curr_piece) { //If where you are trying to move has the other color piece there, jump it
@@ -127,6 +136,9 @@ bool Game::movePiece(Position present, Position future){
          //If where you are trying to go is your color, can't do that
          cout << "Can not move to a space already occupied by your color.\n";
       }
+   } else if(whiteSpace){
+      // If the spot you want to move to is a white space, try again
+      cout << "Can not move to a white space.\n";
    } else { //There isn't a piece where current piece is trying to move
       setPieceAtPosition(future, curr_piece);
       setPieceAtPosition(present, 0x20);
@@ -138,6 +150,7 @@ bool Game::movePiece(Position present, Position future){
    // cout << "---------------------------------------" << endl;
    // cout << "Number of Jumped B: " << numberOfJumpedB << endl;
    // cout << "Number of Jumped W: " << numberOfJumpedW << endl;
+   if(!moveSuccess) cout << "Move unsuccessful, please try again." << endl;
    return moveSuccess;
 }
 
