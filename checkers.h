@@ -75,7 +75,7 @@ class Game : Checkers{
         Position getCoordinates(string spot);
         bool turn();
         bool checkForJump(Position present);
-        bool checkForCurrentPlayerJump(Position position, char current_player);
+        bool checkForCurrentPlayerJump(Position position, char curr_player);
 
         void printScore();
 
@@ -100,7 +100,7 @@ class Menu {
                 cout << "Thanks for stopping by!" << endl;
                 exit(0);
             }
-            cout << "Let's play!" << endl;
+            cout << "Let's play!\nPlayer B goes first." << endl;
         };
 
         void printScore(Game& game){
