@@ -60,9 +60,12 @@ class Game : Checkers{
         Position curr_piece_position;
         Position future_spot_position;
         bool jumpedAPiece;
+        char current_player;
 
         //for quicker testing, print out simple board
         void printBoard();
+
+        char changeCurrentPlayer(char player);
 
         bool movePiece(Position present, Position future);
         void movePiece(int curr_row, int curr_column, int row, int column);
@@ -72,6 +75,7 @@ class Game : Checkers{
         Position getCoordinates(string spot);
         bool turn();
         bool checkForJump(Position present);
+        bool checkForCurrentPlayerJump(Position position, char current_player);
 
         void printScore();
 

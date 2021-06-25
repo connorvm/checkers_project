@@ -426,12 +426,35 @@ bool Game::checkForJump(Position position){
       cout << "ERROR in checkForJump function\n";
       return false;
    }
-   if(jump_left == false && jump_right == false) {
-      // cout << "jump_left = " << jump_left << ", jump_right = " << jump_right << endl;
-      cout << "Can NOT jump either direction\n";
-   }
+   // if(jump_left == false && jump_right == false) {
+   //    // cout << "jump_left = " << jump_left << ", jump_right = " << jump_right << endl;
+   //    cout << "Can NOT jump either direction\n";
+   // }
    return jump_left || jump_right;
 }
+
+bool Game::checkForCurrentPlayerJump(Position position, char current_player){
+   Position down_left_B;
+   down_left_B.row = position.row - 1;
+   down_left_B.column = position.column - 1;
+   Position down_right_B;
+   down_right_B.row = position.row - 1;
+   down_right_B.column = position.column + 1;
+   Position up_left_W;
+   up_left_W.row = position.row + 1;
+   up_left_W.column = position.column - 1;
+   Position up_right_W;
+   up_right_W.row = position.row + 1;
+   up_right_W.column = position.column + 1;
+   cout << getPieceAtPosition(position) << ", " << current_player << endl;
+
+   if(getPieceAtPosition(position) != current_player){
+
+   }
+   
+   
+   return false;
+};
 
 char Game::getPieceAtPosition(Position position){
    return board[position.row][position.column];
@@ -514,3 +537,16 @@ void Board::printBoard(Game& game){
    }
    cout << "   A     B     C     D     E     F     G     H\n\n";
 }
+
+char Game::changeCurrentPlayer(char player){
+   // cout << "In changeCurrentPlayer()\n";
+   if(player == 'B') {
+      // cout << "current_player = B\n";
+      player = 'W';
+   } else{
+      // cout << "current_player = W\n";
+      player = 'B';
+   }
+   return player;
+}
+
