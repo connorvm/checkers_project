@@ -335,6 +335,7 @@ bool Game::checkForJump(Position position){
    //No kings yet, so only need to check "forward" of the piece
    //Find out what piece we're checking for to know which direction to check
    char piece = getPieceAtPosition(position);
+   cout << "IN checkForJump - here3\n";
    cout << "Piece in checkForJump: " << piece << endl;
    cout << "   Coordinates of piece -> Row: " << position.row << ", Column: " << position.column << endl;
    if(piece == 'B'){
@@ -382,16 +383,17 @@ bool Game::checkForJump(Position position){
       cout << "In piece == 'W'\n";
       // cout << "   Coordinates of piece -> Row: " << position.row << ", Column: " << position.column << endl;
       // Check for W -> up_left
-      // cout << "   Piece up_left: " << getPieceAtPosition(up_left_W) << endl;
+      cout << "   Piece up_left: " << getPieceAtPosition(up_left_W) << endl;
       if(getPieceAtPosition(up_left_W) == 'B'){
          // cout << "In up_left_W == 'B'\n";
          //Also need to check that spot where piece will land is clear
          // up_left_W.row++;
          // up_left_W.column--;
          // cout << "   OG up_left_W coordinates -> Row: " << up_left_W.row << ", Column: " << up_left_W.column << endl; 
-         up_left_W.row--;
-         up_left_W.column++;
+         up_left_W.row++;
+         up_left_W.column--;
          // cout << "   New up_left_W coordinates -> Row: " << up_left_W.row << ", Column: " << up_left_W.column << endl;
+         // cout << "   Piece up_left up_left: " << getPieceAtPosition(up_left_W) << endl;
          if(getPieceAtPosition(up_left_W) != 0x20){
             cout << "   Can not jump up_left\n";
             jump_left = false;
@@ -447,10 +449,11 @@ bool Game::checkForCurrentPlayerJump(Position position, char curr_player){
    up_right_W.row = position.row + 1;
    up_right_W.column = position.column + 1;
    cout << getPieceAtPosition(position) << ", " << curr_player << endl;
+   cout << getPieceAtPosition(down_left_B) << ", " << getPieceAtPosition(down_right_B) << ", " << getPieceAtPosition(up_left_W) << ", " << getPieceAtPosition(up_right_W) << endl;
 
    Position player;
    bool jump = false;
-   bool flag = false;
+   bool flag = false;  //Flag is true if curr_player is equal to a certain direction
 
    if(getPieceAtPosition(position) != curr_player){
       cout << "Here1\n";
@@ -473,7 +476,8 @@ bool Game::checkForCurrentPlayerJump(Position position, char curr_player){
          player = up_right_W;
          flag = true;
       }
-      if(flag = true) {
+      cout << "flag = " << flag << endl;
+      if(flag == true) {
          cout << "Here6\n";
          jump = checkForJump(player);
          cout << "Here6 again\n";

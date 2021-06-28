@@ -1,5 +1,4 @@
 TODO:
--Make game more turn based -> Add player 1 and player 2 support
 -Increase "menu" capability
     -> Something else probably
 -Make it so that if a piece can jump an oppenents piece, it will. Checker rules
@@ -26,3 +25,4 @@ DONE:
 -Need to disable moving to a white space
 -Increase "menu" capability
     -> Check how many pieces have been jumped
+-Make game more turn based -> Add player 1 and player 2 support
