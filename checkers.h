@@ -76,6 +76,7 @@ class Game : Checkers{
         bool turn();
         bool checkForJump(Position present);
         bool checkForCurrentPlayerJump(Position position, char curr_player);
+        char makeKing(char curr_piece);
 
         void printScore();
 

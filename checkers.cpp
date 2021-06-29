@@ -122,6 +122,9 @@ bool Game::movePiece(Position present, Position future){
          if(getPieceAtPosition(future) == 0x20) {
             // If the spot to jump to is blank, then jump
             setPieceAtPosition(temp, 0x20); //Clear the piece you jumped
+            if(future.row == 7 || future.row == 0){ //check if piece needs to be kinged
+               curr_piece = makeKing(curr_piece);
+            }
             setPieceAtPosition(future, curr_piece);
             setPieceAtPosition(present, 0x20);
             newSpot = future;
@@ -139,6 +142,9 @@ bool Game::movePiece(Position present, Position future){
       // If the spot you want to move to is a white space, try again
       cout << "Can not move to a white space.\n";
    } else { //There isn't a piece where current piece is trying to move
+      if(future.row == 7 || future.row == 0){ //check if piece needs to be kinged
+         curr_piece = makeKing(curr_piece);
+      }
       setPieceAtPosition(future, curr_piece);
       setPieceAtPosition(present, 0x20);
       newSpot = future;
@@ -448,43 +454,43 @@ bool Game::checkForCurrentPlayerJump(Position position, char curr_player){
    Position up_right_W;
    up_right_W.row = position.row + 1;
    up_right_W.column = position.column + 1;
-   cout << getPieceAtPosition(position) << ", " << curr_player << endl;
-   cout << getPieceAtPosition(down_left_B) << ", " << getPieceAtPosition(down_right_B) << ", " << getPieceAtPosition(up_left_W) << ", " << getPieceAtPosition(up_right_W) << endl;
+   // cout << getPieceAtPosition(position) << ", " << curr_player << endl;
+   // cout << getPieceAtPosition(down_left_B) << ", " << getPieceAtPosition(down_right_B) << ", " << getPieceAtPosition(up_left_W) << ", " << getPieceAtPosition(up_right_W) << endl;
 
    Position player;
    bool jump = false;
    bool flag = false;  //Flag is true if curr_player is equal to a certain direction
 
    if(getPieceAtPosition(position) != curr_player){
-      cout << "Here1\n";
+      // cout << "Here1\n";
       // Need to find position of curr_player in relation to position
       // Then checkForJump(curr_player Position)
       if(getPieceAtPosition(down_left_B)  == curr_player){
-         cout << "Here2\n";
+         // cout << "Here2\n";
          player = down_left_B;
          flag = true;
       } else if(getPieceAtPosition(down_right_B) == curr_player){
-         cout << "Here3\n";
+         // cout << "Here3\n";
          player = down_right_B;
          flag = true;
       } else if(getPieceAtPosition(up_left_W)    == curr_player){
-         cout << "Here4\n";
+         // cout << "Here4\n";
          player = up_left_W;
          flag = true;
       } else if(getPieceAtPosition(up_right_W)   == curr_player){
-         cout << "Here5\n";
+         // cout << "Here5\n";
          player = up_right_W;
          flag = true;
       }
-      cout << "flag = " << flag << endl;
+      // cout << "flag = " << flag << endl;
       if(flag == true) {
-         cout << "Here6\n";
+         // cout << "Here6\n";
          jump = checkForJump(player);
-         cout << "Here6 again\n";
+         // cout << "Here6 again\n";
          return jump;
       }
    } else {
-      cout << "Here7\n";
+      // cout << "Here7\n";
       return jump;
    }
    return false;
@@ -584,3 +590,13 @@ char Game::changeCurrentPlayer(char player){
    return player;
 }
 
+char Game::makeKing(char curr_piece){
+   cout << curr_piece << " is being kinged! It will now appear as ";
+   if(curr_piece == 'B'){
+      curr_piece = 'b';
+   } else{
+      curr_piece = 'w';
+   }
+   cout << curr_piece << "." << endl;
+   return curr_piece;
+}
